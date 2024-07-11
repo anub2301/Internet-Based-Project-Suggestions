@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interest-Based Project Suggestions</title> <!-- Set your website name here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.50);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .survey label {
+            display: block;
+            margin: 10px 0 6px;
+            font-weight: bold;
+            color: #556;
+        }
+
+        .survey input, .survey select, .survey textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .result h2 {
+            color: #333;
+        }
+
+        .result ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .result li {
+            background-color: #e9e9e9;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interest-Based Project Suggestion</h1>
+        <div class="survey">
+            <label for="interests">What are your main interests?</label>
+            <textarea id="interests" rows="3" placeholder="e.g., AI, Web Development, IoT"></textarea>
+            
+            <label for="skills">What are your current skills?</label>
+            <textarea id="skills" rows="3" placeholder="e.g., Python, JavaScript, Circuit Design"></textarea>
+            
+            <label for="goals">What are your career goals?</label>
+            <textarea id="goals" rows="3" placeholder="e.g., Become a Data Scientist, Develop innovative hardware solutions"></textarea>
+            
+            <button onclick="suggestProjects()">Get Project Suggestions</button>
+        </div>
+        
+        <div class="result" id="result">
+            <h2>Suggested Projects</h2>
+            <ul id="projectList"></ul>
+        </div>
+    </div>
+
+    <script>
+        function suggestProjects() {
+            const interests = document.getElementById('interests').value.toLowerCase();
+            const skills = document.getElementById('skills').value.toLowerCase();
+            const goals = document.getElementById('goals').value.toLowerCase();
+            
+            const projects = [];
+            
+            if (interests.includes('ai') || interests.includes('machine learning')) {
+                projects.push('Build a machine learning model to predict house prices.');
+                projects.push('Create a chatbot using natural language processing.');
+            }
+            
+            if (interests.includes('web development')) {
+                projects.push('Develop a personal portfolio website using HTML, CSS, and JavaScript.');
+                projects.push('Create a full-stack web application with a Node.js backend.');
+            }
+            
+            if (interests.includes('iot') || interests.includes('internet of things')) {
+                projects.push('Design a smart home system with Arduino and sensors.');
+                projects.push('Create an IoT-based health monitoring system.');
+            }
+            
+            if (skills.includes('python')) {
+                projects.push('Develop a web scraper to gather data from online sources.');
+                projects.push('Create a data analysis project using pandas and matplotlib.');
+            }
+            
+            if (skills.includes('javascript')) {
+                projects.push('Build a dynamic to-do list application.');
+                projects.push('Develop an interactive data visualization dashboard.');
+            }
+            
+            if (skills.includes('circuit design')) {
+                projects.push('Design a simple microcontroller-based project like a temperature sensor.');
+                projects.push('Create a custom PCB for an electronics project.');
+            }
+            
+            if (goals.includes('data scientist')) {
+                projects.push('Complete a Kaggle competition to practice data science skills.');
+                projects.push('Analyze a public dataset and present your findings in a report.');
+            }
+            
+            if (goals.includes('innovative hardware solutions')) {
+                projects.push('Prototype a new electronic device to solve a real-world problem.');
+                projects.push('Participate in a hackathon focused on hardware development.');
+            }
+            
+            const resultDiv = document.getElementById('result');
+            const projectList = document.getElementById('projectList');
+            projectList.innerHTML = '';
+
+            if (projects.length === 0) {
+                projectList.innerHTML = '<li>No specific projects found. Try broadening your interests or skills.</li>';
+            } else {
+                projects.forEach(project => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = project;
+                    projectList.appendChild(listItem);
+                });
+            }
+            
+            resultDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
