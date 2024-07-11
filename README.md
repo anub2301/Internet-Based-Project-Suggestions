@@ -4,7 +4,7 @@ An interactive tool for generating personalized project ideas based on user inte
 
 ## Demo
 
-You can use the tool online [here](ons/).
+You can use the tool online [here](https://anub2301.github.io/Internet-Based-Project-Suggestions/).
 
 ## Features
 
